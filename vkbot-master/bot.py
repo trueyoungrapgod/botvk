@@ -44,7 +44,7 @@ def unsubUser(event, curs):
         vk.messages.send(
             user_id=userID,
             random_id = 0,
-            message="Вы не подписаны!"
+            message="Вы не подписаны! /sub - подписаться на рассылку"
         )
     return
 
@@ -618,7 +618,7 @@ def PickClass(event, curs):
     vk.messages.send(
         user_id=userID,
         random_id = 0,
-        message="Выберите класс",
+        message="Для персональной настройки рассылок выберите свой класс",
         keyboard = keyboard.get_keyboard()
     )
     curs.execute("SELECT reg FROM users WHERE user_id = '%d'"%(userID))
@@ -647,7 +647,7 @@ def PickGroup(event, curs):
     vk.messages.send(
         user_id=userID,
         random_id = 0,
-        message="Выберите направление",
+        message="Выберите своё направление",
         keyboard = keyboard.get_keyboard()
     )
     curs.execute("SELECT reg FROM users WHERE user_id = '%d'"%(userID))
@@ -687,7 +687,7 @@ def PickSubClass(event, curs):
     vk.messages.send(
         user_id=userID,
         random_id = 0,
-        message="Выберите группу",
+        message="Выберите свою группу",
         keyboard = keyboard.get_keyboard()
     )
     curs.execute("SELECT reg FROM users WHERE user_id = '%d'"%(userID))
@@ -709,7 +709,7 @@ def FirstQuestion(event, curs):
         user_id=userID,
         random_id = 0,
         keyboard = keyboard.get_keyboard(),
-        message="Вопрос [1/3]:\n1. Все\n2. Только самые важные \n3. Только о дедлайнах ИВР"
+        message="Вопрос [1/3]: Какие рассылки вы хотите получать? \n1. Все\n2. Только самые важные \n3. Только о дедлайнах ИВР"
     )
     curs.execute("SELECT reg FROM users WHERE user_id = '%d'"%(userID))
     reg = int(curs.fetchone()[0])
@@ -788,7 +788,7 @@ def ThirdQuestion(event, curs):
         user_id=userID,
         random_id = 0,
         keyboard = keyboard.get_keyboard(),
-        message="Вопрос [3/3]: За сколько информировать:\n1. За неделю \n2. За 1-2 дня до мероприятия "
+        message="Вопрос [3/3]: За сколько вас информировать о мероприятиях? \n1. За неделю \n2. За 1-2 дня до мероприятия "
     )
     curs.execute("SELECT reg FROM users WHERE user_id = '%d'"%(userID))
     reg = int(curs.fetchone()[0])
